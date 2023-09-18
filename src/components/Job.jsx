@@ -7,7 +7,7 @@ const Job = ({ job }) => {
   const favComp = useSelector(state => state.favComp.content);
   const dispatch = useDispatch();
   return (
-    <Row className="mx-0 mt-3 p-3" style={{ border: "1px solid #00000033", borderRadius: 4 }}>
+    <Row className="mx-0 mt-3 p-3 border rounded-2 shadow-sm">
       <Col xs={3}>
         <Link className="text-decoration-none text-reset" to={`/${job.company_name}`}>
           {job.company_name}
