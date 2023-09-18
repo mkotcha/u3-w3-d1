@@ -17,7 +17,7 @@ const CompanySearchResults = () => {
   return (
     <Container>
       <Row>
-        <Col xs={10} className="my-3">
+        <Col xs={10} className="mx-auto my-3">
           <h1 className="display-4">Job posting for: {params.company}</h1>
           {jobs.map(jobData => (
             <Job key={jobData._id} job={jobData} />
