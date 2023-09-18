@@ -5,7 +5,9 @@ const TopBar = () => {
   return (
     <Navbar expand="md" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">Fatica2000</Navbar.Brand>
+        <NavLink className="navbar-brand" to="/">
+          Fatica2000
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
