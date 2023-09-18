@@ -29,7 +29,6 @@ const MainSearch = () => {
       <Row>
         <Col xs={10} className="mx-auto my-3">
           <h1 className="display-1">Remote Jobs Search</h1>
-          <Link to="/favourites">Fav</Link>
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>

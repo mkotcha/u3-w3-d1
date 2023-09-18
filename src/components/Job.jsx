@@ -9,10 +9,12 @@ const Job = ({ job }) => {
   return (
     <Row className="mx-0 mt-3 p-3" style={{ border: "1px solid #00000033", borderRadius: 4 }}>
       <Col xs={3}>
-        <Link to={`/${job.company_name}`}>{job.company_name}</Link>
+        <Link className="text-decoration-none text-reset" to={`/${job.company_name}`}>
+          {job.company_name}
+        </Link>
       </Col>
       <Col xs={8}>
-        <a href={job.url} target="_blank" rel="noreferrer">
+        <a className="text-decoration-none text-info" href={job.url} target="_blank" rel="noreferrer">
           {job.title}
         </a>
       </Col>
@@ -22,7 +24,7 @@ const Job = ({ job }) => {
         )}
 
         {favComp.find(elm => elm._id === job._id) && (
-          <i className="bi bi-star-fill" onClick={() => dispatch(removeFromFavCompAction(job))}></i>
+          <i className="bi bi-star-fill text-warning" onClick={() => dispatch(removeFromFavCompAction(job))}></i>
         )}
       </Col>
     </Row>
