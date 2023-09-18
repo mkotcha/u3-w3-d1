@@ -1,40 +1,28 @@
-import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Job from "./Job";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { getJobsAction } from "../redux/actions";
 
 const CompanySearchResults = () => {
-  const [jobs, setJobs] = useState([]);
+  const jobs = useSelector(state => state.jobs.content);
   const params = useParams();
+  const dispatch = useDispatch();
 
-  const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?company=";
-
-  useEffect(() => {
-    getJobs();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  useState(() => {
+    dispatch(getJobsAction(params.company, "company"));
   }, []);
-
-  const getJobs = async () => {
-    try {
-      const response = await fetch(baseEndpoint + params.company);
-      if (response.ok) {
-        const { data } = await response.json();
-        setJobs(data);
-      } else {
-        alert("Error fetching results");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <Container>
       <Row>
         <Col className="my-3">
           <h1 className="display-4">Job posting for: {params.company}</h1>
-          {jobs.content.map(jobData => (
-            <Job key={jobData._id} data={jobData} />
+          <Link to="/">Home</Link>
+          <Link to="/favourites">Fav</Link>
+          {jobs.map(jobData => (
+            <Job key={jobData._id} job={jobData} />
           ))}
         </Col>
       </Row>

@@ -2,7 +2,7 @@ const initialState = {
   jobs: {
     content: [],
   },
-  favourites: {
+  favComp: {
     content: [],
   },
 };
@@ -15,21 +15,21 @@ const mainReducer = (state = initialState, action) => {
         jobs: { ...state.jobs, content: [...action.payload] },
       };
 
-    case "ADD_TO_FAVOURITE":
+    case "ADD_TO_FAV_COMP":
       return {
         ...state,
-        favourites: {
-          ...state.favourites,
-          content: [...state.favourites.content, action.payload],
+        favComp: {
+          ...state.favComp,
+          content: [...state.favComp.content, action.payload],
         },
       };
 
-    case "REMOVE_FROM_FAVOURITE":
+    case "REMOVE_FROM_FAV_JOB":
       return {
         ...state,
-        favourites: {
-          ...state.favourites,
-          content: state.favourites.content.filter(elm => elm !== action.payload),
+        favComp: {
+          ...state.favComp,
+          content: state.favComp.content.filter(elm => elm !== action.payload),
         },
       };
 
