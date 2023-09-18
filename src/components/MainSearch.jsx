@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Job from "./Job";
-import { Link } from "react-router-dom";
 import { getJobsAction, unsetJobsAction } from "../redux/actions";
 
 const MainSearch = () => {
@@ -20,9 +19,9 @@ const MainSearch = () => {
     dispatch(getJobsAction(query, "search"));
   };
 
-  useState(() => {
+  useEffect(() => {
     dispatch(unsetJobsAction());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container>
@@ -36,8 +35,8 @@ const MainSearch = () => {
           </Form>
         </Col>
         <Col xs={10} className="mx-auto mb-5">
-          {jobs.map((job, i) => (
-            <Job key={job._id} job={job} />
+          {jobs.map(job => (
+            <Job key={"m" + job._id} job={job} />
           ))}
         </Col>
       </Row>

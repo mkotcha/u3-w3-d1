@@ -15,7 +15,7 @@ const favCompReducer = (state = initialState, action) => {
     case REMOVE_FROM_FAV_COMP:
       return {
         ...state,
-        content: state.content.filter(elm => elm !== action.payload),
+        content: state.content.filter(elm => elm._id !== action.payload._id),
       };
 
     default:

@@ -19,12 +19,10 @@ const Job = ({ job }) => {
         </a>
       </Col>
       <Col xs={1}>
-        {!favComp.find(elm => elm._id === job._id) && (
-          <i className="bi bi-star" onClick={() => dispatch(addToFavCompAction(job))}></i>
-        )}
-
-        {favComp.find(elm => elm._id === job._id) && (
+        {favComp.find(elm => elm._id === job._id) ? (
           <i className="bi bi-star-fill text-warning" onClick={() => dispatch(removeFromFavCompAction(job))}></i>
+        ) : (
+          <i className="bi bi-star" onClick={() => dispatch(addToFavCompAction(job))}></i>
         )}
       </Col>
     </Row>

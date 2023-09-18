@@ -1,8 +1,8 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Job from "./Job";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect } from "react";
 import { getJobsAction } from "../redux/actions";
 
 const CompanySearchResults = () => {
@@ -10,17 +10,17 @@ const CompanySearchResults = () => {
   const params = useParams();
   const dispatch = useDispatch();
 
-  useState(() => {
+  useEffect(() => {
     dispatch(getJobsAction(params.company, "company"));
-  }, []);
+  }, [dispatch, params.company]);
 
   return (
     <Container>
       <Row>
         <Col xs={10} className="mx-auto my-3">
           <h1 className="display-4">Job posting for: {params.company}</h1>
-          {jobs.map(jobData => (
-            <Job key={jobData._id} job={jobData} />
+          {jobs.map(job => (
+            <Job key={"c" + job._id} job={job} />
           ))}
         </Col>
       </Row>

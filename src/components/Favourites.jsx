@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import Job from "./Job";
-import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 
 const Favourites = () => {
@@ -12,8 +11,8 @@ const Favourites = () => {
         <Row>
           <Col xs={10} className="mx-auto my-3">
             <h1 className="display-4">Favourites</h1>
-            {favComp.map((elm, i) => (
-              <Job key={elm._id + i} job={elm} />
+            {favComp.map(elm => (
+              <Job key={"f" + elm._id} job={elm} />
             ))}
           </Col>
         </Row>
