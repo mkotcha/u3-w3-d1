@@ -21,7 +21,7 @@ const MainSearch = () => {
 
   useEffect(() => {
     dispatch(unsetJobsAction());
-  }, [dispatch]);
+  }, []);
 
   return (
     <Container>
